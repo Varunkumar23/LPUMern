@@ -1067,13 +1067,17 @@ const newdiv=document.createElement("div");
 newdiv.className="card";
 newdiv.innerHTML=
 `
+<img src="${elem.image}" alt="${elem.name}">
+
 <h4>${elem.name}</h4>
+<button class="order-btn">Order Now</button>
 <div>
 <p>${elem.rating}</p>
 <p>${elem.cuisine}</p>
 </div>
 
 <p class="ingre">${elem.ingredients}</p>
+
 `;
 hello.append(newdiv);
 

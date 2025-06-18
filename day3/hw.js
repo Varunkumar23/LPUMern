@@ -1059,7 +1059,7 @@ const data = {
 };
 
 //delinking recipes from data object
-const{recipes}=data;
+const { recipes } = data;
 
 // for (let i = 0; i < recipes.length; i++) {
 //   console.log("Name:", recipes[i].name);
@@ -1078,7 +1078,6 @@ const{recipes}=data;
 // }
 // console.log(newArr);
 
-
 // using foreach ==========================================================================
 
 // const newArr1=[];
@@ -1094,8 +1093,6 @@ const{recipes}=data;
 // )
 // console.log(newArr1);
 
-
-
 // using map   ===============================================================================
 
 // const newArr2=[];
@@ -1110,7 +1107,6 @@ const{recipes}=data;
 
 // )
 // console.log(newArr2);
-
 
 // Filter methods
 
@@ -1136,7 +1132,3 @@ const{recipes}=data;
 // }
 // )
 // console.log(finalarr)
-
-
-
-

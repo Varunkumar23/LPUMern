@@ -16,27 +16,32 @@
 // console.log(header);
 
 // headings[0].innerText = "Good Morning";
+// headings[1].innerText = "Good Morning";
 
 // =====================================================================================================================>
 // 2.  document.getElementsByClassName
 
-const elements = document.getElementsByClassName("text-brown");
-console.log(elements);
+// const elements = document.getElementsByClassName("text-brown");
+// console.log(elements);
 
-elements[0].style.color = "brown";
+// elements[0].style.color = "blue";
+// elements[1].style.color = "red";
 
 //=================================================================================================================>
 
 // 3. document.getElementById
 
-const text = document.getElementById("text-1");
-text.style.backgroundColor = "red";
+// const text = document.getElementById("text-1");
+// text.style.backgroundColor = "grey";
 
 //==============================================================================================================>
 
-// 4. document.querySelectorAll
+// 4. document.querySelectorAll this gives all the selectors that are present on the web page
 
-const helo = document.querySelectorAll("div");
+const helo = document.querySelectorAll("h3");
 console.log(helo);
 
-// 5. document.querySelector
+// 5. document.querySelector  this will give only the first selector that encounters by the compiler
+
+const firstDiv = document.querySelector("div");
+
