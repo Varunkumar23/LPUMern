@@ -59,13 +59,3 @@ cb(finalamount);
 }
 
 calculateTotalBill(100,400,100,printBillforFoodDrinksandClothes);
-
-
-
-
-
-
-
-
-
-
