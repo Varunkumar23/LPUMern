@@ -1070,7 +1070,7 @@ newdiv.innerHTML=
 <img src="${elem.image}" alt="${elem.name}">
 
 <h4>${elem.name}</h4>
-<button class="order-btn">Order Now</button>
+<button class="order-btn" onclick="handleOrders()">Order Now</button>
 <div>
 <p>${elem.rating}</p>
 <p>${elem.cuisine}</p>
@@ -1085,3 +1085,24 @@ hello.append(newdiv);
 });
 };
 createui();
+
+const handleOrders=()=>{
+  alert("Items Added to cart!")
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.getElementById("locationBtn");
+  const mapDiv = document.getElementById("mapContainer");
+  const mapFrame = document.getElementById("mapFrame");
+
+  button.addEventListener("click", function () {
+    if (mapDiv.style.display === "none" || mapDiv.style.display === "") {
+      mapDiv.style.display = "block";
+      mapFrame.src = "https://www.openstreetmap.org/export/embed.html?bbox=77.58,12.93,77.61,12.96&layer=mapnik";
+    } else {
+      mapDiv.style.display = "none";
+    }
+  });
+});
