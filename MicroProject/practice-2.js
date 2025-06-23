@@ -1058,24 +1058,35 @@ const arr = {
   limit: 30,
 };
 
+
+
 const hello=document.getElementById("root");
 const{recipes}=arr;
 
 const createui=()=>{
-recipes.forEach((elem)=>{
-const newdiv=document.createElement("div");
-newdiv.className="card";
-newdiv.innerHTML=
-`
+  recipes.forEach((elem)=>{
+    const newdiv=document.createElement("div");
+    newdiv.className="card";
+    recipes.forEach((recipe) => {
+      recipe.price = Math.floor(Math.random() * 200) + 100; // price between ₹100 - ₹299
+    });
+    newdiv.innerHTML=
+    `
 <img src="${elem.image}" alt="${elem.name}">
 
 <h4>${elem.name}</h4>
 <button class="order-btn" onclick="handleOrders()">Order Now</button>
-<div>
-<p>${elem.rating}</p>
-<p>${elem.cuisine}</p>
+
+<div class="info-box">
+  <p>Price: <strong>₹${elem.price}</strong></p>
+  <p>Meal Type: <strong>${elem.mealType}</strong></p>
+  <p>Estimated Time: <strong>20 min</strong></p>
+  <p>Kcals: <strong>${elem.caloriesPerServing}</strong></p>
 </div>
 
+<div id="star">
+<p><i class="fa-solid fa-star"></i>${elem.rating}</p>
+</div>
 <p class="ingre">${elem.ingredients}</p>
 
 `;
@@ -1089,6 +1100,8 @@ createui();
 const handleOrders=()=>{
   alert("Items Added to cart!")
 }
+
+
 
 
 

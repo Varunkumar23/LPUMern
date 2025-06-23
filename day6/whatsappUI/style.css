@@ -1,0 +1,56 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#whatsapp-web{
+    display: grid;
+    grid-template-columns: 100px 1fr 0fr;
+    height: 100vh;
+}
+
+#left{
+    padding: 1rem 0;
+    background-color:grey;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+}
+
+#chat{
+    background-color:rgb(240,236,236);
+}
+
+#chat-messages{
+    background-color:#A3A3A3;
+    display: none;
+}
+
+@media(width>=768px){
+    #whatsapp-web{
+        grid-template-columns: 100px 460px 1fr;
+    }
+
+    #chat-messages{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+#icon{
+    height: 60px;
+    width: 60px;
+    background-color: rgba(211,211,211,0.4);
+    border-radius: 0.75rem;
+    transition: all 500ms linear;
+}
+
+#icon:hover{
+        background-color: rgba(211,211,211,0.9);
+
+}

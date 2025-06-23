@@ -73,7 +73,7 @@ body{
     border:5px solid grey;
     border-radius: 10px;
     padding:0.5rem;
-    
+    margin-top:10px;
 }
 
 .navbar{
@@ -83,7 +83,8 @@ body{
   height:60px;
   border-radius: 20px;
   align-items: center;
-  justify-content:space-evenly;
+  justify-content:space-between;
+  padding-inline:20px;
   /* position: fixed; */
   
   
@@ -117,15 +118,63 @@ body{
 
 }
 
-a{
+#logo{
+  height:10px;
+  width: 10px;
+  background-repeat:no-repeat;
+  background-size: cover;
   display: flex;
-  margin-left: 200px;
-  /* align-items: center; */
+  align-items: center;
+
+
+}
+
+#star{
+  margin-top:-40px;
+}
+
+
+
+
+
+
+.links{
+  display: flex;
+  /* margin-left: 200px; */
+  align-items: center;
   text-decoration: none;
   color: black;
     font-weight: bold;
+    justify-content: center;
+    flex-direction: row;
+    gap:60px;
 
 }
+
+.links a{
+  text-decoration: none;
+  color: black;
+  font-style: bold;
+  font-size:large;
+}
+
+.info-box{
+  height:100px;
+  width: 200px;
+    border:5px solid grey;
+    border-radius: 10px;
+    margin-left:130px;
+    margin-top: -38px;
+    display:inline;
+    padding-left: 10px;
+
+}
+
+.info-box p {
+    margin: 0;
+    /* font-size: 16px; */
+  }
+
 #mapContainer {
   position: relative; /* or absolute/fixed if needed */
   z-index: 9999;       /* make sure it's on top */
@@ -134,6 +183,24 @@ a{
   display: none;
  
 }
+
+.fa-star{
+  color: gold;
+margin-right: 3px;
+  
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+
+
+
 
 
 
@@ -148,22 +215,30 @@ a{
     <!-- <h1>practice-2 App</h1> -->
     <header>
       <div class="navbar">
-<a href="#">Menu</a>
-<a href="#">Orders</a>
-<a href="#">Restaurants</a>
-<a href="#">Contact Us</a>
-<input placeholder="Hungry? Find your favorite meal"></input>
-<button>search</button>
-<button onclick="showMap()" id="locationBtn"><i class="fas fa-map-marker-alt"></i></button>
-<div id="mapContainer" style="display: none;">
-  <iframe
-    id="mapFrame"
-    width="600"
-    height="400"
-    style="border: 1px solid black;"
-    src="">
-  </iframe>
-</div>
+        <div id="logo">
+          <img src="../../—Pngtree—bakso bakar indonesian food logo_8406467.png" width="60px" height="60px">
+        </div>
+        <div class="links">
+          <a href="#">Today's Specials</a>
+          <a href="#">Orders</a>
+          <a href="#">Restaurants</a>
+          <a href="#">Contact Us</a>
+          <a href="./Aboutus.html">About Us</a>
+        </div>
+        <div class="search">
+          <input placeholder="Hungry? Find your favorite meal"></input>
+          <button>search</button>
+        </div>
+        <button onclick="showMap()" id="locationBtn"><i class="fas fa-map-marker-alt"></i></button>
+        <div id="mapContainer" style="display: none;">
+          <iframe
+            id="mapFrame"
+            width="600"
+            height="400"
+            style="border: 1px solid black;"
+            src="">
+          </iframe>
+        </div>
 
 
 
@@ -172,6 +247,7 @@ a{
     </header>
         <main id="root"></main>
     <footer> &copy; VarunKumar@pvt.Limited</footer>
+
     <script src="./practice-2.js"></script>
 </body>
 </html>

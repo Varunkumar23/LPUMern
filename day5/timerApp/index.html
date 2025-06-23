@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #timer-cointainer {
+        border: solid 1px black;
+        background-color:antiquewhite;
+        height: 150px;
+        width: 250px;
+        padding-left: 20px;
+        border-radius: 15px;
+        margin-top: 250px;
+        
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+      button{
+        background-color:orange;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="timer-cointainer">
+      <p id="timer-text">00:00:00</p>
+      <button onclick="handleReset()">Reset</button>
+      <button onclick="handlePause()">Pause</button>
+      <button onclick="handleResume()">Resume</button>
+      <button onclick="handleLap()">Lap</button>
+    </div>
+    <div id="root"></div>
+
+    <script src="./timerapp.js"></script>
+  </body>
+</html>
