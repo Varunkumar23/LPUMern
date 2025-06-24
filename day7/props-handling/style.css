@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hello{
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.card{
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background-color: orange;
+    border: 1px  solid black;
+}
