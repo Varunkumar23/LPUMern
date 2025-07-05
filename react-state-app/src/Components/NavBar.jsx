@@ -1,4 +1,5 @@
 import "./NavBar.css"
+import { SearchBox } from "./SearchBox";
 
 const NavBar=()=>{
     return(
@@ -7,6 +8,7 @@ const NavBar=()=>{
             <a>Services</a>
             <a>About Us</a>
             <a>Contact Us</a>
+            <SearchBox />
         </div>
     );
 };

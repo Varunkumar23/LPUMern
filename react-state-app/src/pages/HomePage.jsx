@@ -1,4 +1,5 @@
 import { NavBar } from "../Components/NavBar";
+
 const HomePage=()=>{
 return(
     <div>
