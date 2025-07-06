@@ -1,0 +1,18 @@
+.heading_title{
+color: black;
+}
+
+.main_container{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: orange;
+    
+}
+
+.right_container{
+display: flex;
+align-items: center;
+gap: 2rem;
+}

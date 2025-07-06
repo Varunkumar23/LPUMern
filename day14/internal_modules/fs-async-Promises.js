@@ -36,11 +36,14 @@ const main = async () => {
   try {
     const response2 = await fsPromises.readFile("./student.txt", "utf-8");
     console.log(response2);
+    // fsPromises.appendFile('./temp.txt',response2);
   } catch (err) {
     console.log("Cannot read the file", err.message);
   }
 
   console.log("------------------End!-------------------");
+
 };
+
 
 main();

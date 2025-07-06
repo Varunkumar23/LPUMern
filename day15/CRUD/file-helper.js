@@ -1,79 +1,119 @@
 const fsPromises = require("fs/promises");
-const { fileURLToPath } = require("url");
 const { v4: uuidv4 } = require("uuid");
+
+
+//====================================================================================================>
+
+const saveArrayToFile = async (arr, filePath) => {
+    try {
+        const stringifiedArr = JSON.stringify(arr, null, 4);
+        await fsPromises.writeFile(filePath, stringifiedArr, "utf-8");
+    } catch (err) {
+        // worst and unprepared case
+        console.error("🔴 Error saving the file ::", err.message);
+        return null;
+    }
+};
+
+//=====================================================================================================>
+
+const saveObjectToArrayInFile = async (obj, filePath) => {
+    const arr = await getAllDataFromArrayFromFile(filePath);
+    obj.id = uuidv4();
+    arr.push(obj);
+    await saveArrayToFile(arr, filePath);
+};
+
+//=====================================================================================================>
 
 const getAllDataFromArrayFromFile = async (filePath) => {
     try {
         const txt = await fsPromises.readFile(filePath, "utf-8");
         try {
             const data = JSON.parse(txt);
-            if (!Array.isArray(data)) {
-                console.warn("Data in file is not an array. Resetting file.");
-                await fsPromises.writeFile(filePath, "[]", "utf-8");
-                return [];
-            }
             return data;
         } catch {
-            console.warn("This file is corrupted");
+            console.warn("🟡 The file is corrupted or not a valid JSON format. Resetting it!");
             await fsPromises.writeFile(filePath, "[]", "utf-8");
             return [];
         }
     } catch (err) {
         if (err.code === "ENOENT") {
-            console.log("Creating the file...........");
+            console.warn("🟡 Creating file...");
             await fsPromises.writeFile(filePath, "[]", "utf-8");
             return [];
         }
-        console.error("Error reading the file", err.message);
+        // worst and unprepared case
+        console.error("🔴 Error reading the file ::", err.message);
         return null;
     }
 };
 
-const saveArrayToFile = async (arr, filePath) => {
-    try {
-        const stringifyArr = JSON.stringify(arr, null, 4);
-        await fsPromises.writeFile(filePath, stringifyArr, "utf-8");
-    } catch (err) {
-        console.log("Error saving the file.........", err.message);
-        return null;
-    }
-};
 
-const saveObjectToArrayInFile = async (obj, filePath) => {
-    let arr = await getAllDataFromArrayFromFile(filePath);
-    if (!Array.isArray(arr)) {
-        console.warn("Warning: data read is not an array. Resetting to empty array.");
-        arr = [];
-    }
-    obj.id = uuidv4();
-    arr.push(obj);
-    await saveArrayToFile(arr, filePath);
-};
+//============================================================================================================>
 
-
-const editObjectFromArrayFromFile=async(newObjProperties,elemId,filePath)=>{
-    const arr=await getAllDataFromArrayFromFile(filePath);
-    const idx=arr.findIndex((elem)=>{
-        if(elem.id===elemId){
+const editObjectFromArrayFromFile = async (newObjProperties, elemId, filePath) => {
+    const arr = await getAllDataFromArrayFromFile(filePath);
+    // if it is able to parse --> get the particular Object from array using id
+    const idx = arr.findIndex((elem) => {
+        if (elem.id === elemId) {
             return true;
-        }else{
+        } else {
             return false;
         }
-    })
+    });
 
-    if(idx===-1){
-        console.log("Invalid id: No object found with the given id!");
+    if (idx === -1) {
+        console.error("🔴 Invalid Id. No object found with given Id!");
         return arr;
     }
 
-    const currentObject=arr[idx];
-    const newObject={...currentObject,...newObjProperties};
-    arr[idx]=newObject;
+    // change the object as you want
+    const currentObject = arr[idx];
+    const newObject = { ...currentObject, ...newObjProperties };
+    arr[idx] = newObject;
 
-    saveArrayToFile(arr,filePath);
-}
+    // save to the file
+    saveArrayToFile(arr, filePath);
+};
 
 
+//===================================================================================================================>
+
+const deleteObjectFromArrayFromFile = async (idx, filePath) => {
+    //H.W.
+    // read the file
+    // try to convert it into JS object using JSON.parse()
+    // if there is any error --> file is empty
+    //                       --> show the error in the console ---> object does not exists
+    // if it is able to parse --> delete the object from the array
+    //                        --> ::save the new array to the file::
+
+    try {
+        const arr = await getAllDataFromArrayFromFile(filePath);
+        const deleteIndex = arr.findIndex((elem) => elem.id === idx);
+
+        if (deleteIndex === -1) {
+            console.error("🔴 Invalid ID. No object found with the given ID!");
+            return arr;
+        }
+
+        arr.splice(deleteIndex, 1);
+        await saveArrayToFile(arr, filePath);
+        console.log("✅ Object deleted successfully!");
+        return arr;
+    } catch (err) {
+        console.error("🔴 Error deleting object:", err.message);
+        return null;
+    }
+};
 
 
-module.exports = { getAllDataFromArrayFromFile, saveArrayToFile, saveObjectToArrayInFile,editObjectFromArrayFromFile };
+//======================================================================================================================>
+
+module.exports = {
+    saveObjectToArrayInFile,
+    getAllDataFromArrayFromFile,
+    editObjectFromArrayFromFile,
+    deleteObjectFromArrayFromFile,
+};
